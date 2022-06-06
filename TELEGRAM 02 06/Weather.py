@@ -1,4 +1,4 @@
-import SECRET  # секретные ключи, пароли
+import SECRET
 
 
 def get_wind_direction(deg, advanced_result=False):

@@ -1,9 +1,8 @@
-# ======================================= Развлечения
 import requests
-import bs4  # BeautifulSoup4
+import bs4
 from telebot import types
 from io import BytesIO
-import SECRET  # секретные ключи, пароли
+import SECRET
 
 # -----------------------------------------------------------------------
 def get_text_messages(bot, cur_user, message):
@@ -11,7 +10,7 @@ def get_text_messages(bot, cur_user, message):
     ms_text = message.text
 
     if ms_text == "Пришли собачку 🐶":
-        bot.send_photo(chat_id, photo=get_dogURL(), caption="Вот тебе собачка!")
+        bot.send_photo(chat_id, photo=get_dogURL(), caption="*гав гав*")
 
     elif ms_text == "Пришли котика ^^ meow":
         bot.send_photo(chat_id, photo=get_cat(), caption="meow~!")

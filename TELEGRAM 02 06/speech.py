@@ -1,4 +1,4 @@
-import speech_recognition as sr  # SpeechRecognition 3.8.1
+import speech_recognition as sr
 import threading
 from datetime import datetime
 

@@ -1,31 +1,29 @@
-# Телеграм-бот v.004
-
-import telebot  # pyTelegramBotAPI 4.3.1
+import telebot
 from telebot import types
-import botGames  # бот-игры, файл botGames.py
+import botGames
 import menuBot
-from menuBot import Menu  # в этом модуле есть код, создающий экземпляры классов описывающих моё меню
+from menuBot import Menu
 import DZ
 import fun
 import speech
-import SECRET  # секретные ключи, пароли
+import SECRET
 
-bot = telebot.TeleBot(SECRET.OWM_TOKEN)  # Создаем экземпляр бота
+bot = telebot.TeleBot(SECRET.OWM_TOKEN)
 
 
 # -----------------------------------------------------------------------
-# Функция, обрабатывающая команды
+
 @bot.message_handler(commands="start")
 def command(message):
     chat_id = message.chat.id
     bot.send_sticker(chat_id, "5151592947:AAHkIzdW6c_jTAHfKW-pbFhFJEdGm1HhSwo")
-    txt_message = f"Привет, {message.from_user.first_name}! Я тестовый бот для курса программирования на языке Python"
+    txt_message = f"Здравствуй, {message.from_user.first_name}! Я вижу ты у нас впервые ^^ "
     bot.send_message(chat_id, text=txt_message, reply_markup=Menu.getMenu(chat_id, "Главное меню").markup)
 
 
 
 # -----------------------------------------------------------------------
-# Получение стикеров от юзера
+
 @bot.message_handler(content_types=['sticker'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -41,7 +39,7 @@ def get_messages(message):
 
 
 # -----------------------------------------------------------------------
-# Получение аудио от юзера
+
 @bot.message_handler(content_types=['audio'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -52,7 +50,7 @@ def get_messages(message):
 
 
 # -----------------------------------------------------------------------
-# Получение голосовухи от юзера
+
 @bot.message_handler(content_types=['voice'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -67,7 +65,7 @@ def get_messages(message):
     bot.send_message(chat_id, speech.getTextFromVoice(audioData))
 
 # -----------------------------------------------------------------------
-# Получение фото от юзера
+
 @bot.message_handler(content_types=['photo'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -78,7 +76,7 @@ def get_messages(message):
 
 
 # -----------------------------------------------------------------------
-# Получение видео от юзера
+
 @bot.message_handler(content_types=['video'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -89,7 +87,7 @@ def get_messages(message):
 
 
 # -----------------------------------------------------------------------
-# Получение документов от юзера
+
 @bot.message_handler(content_types=['document'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -103,7 +101,7 @@ def get_messages(message):
 
 
 # -----------------------------------------------------------------------
-# Получение координат от юзера
+
 @bot.message_handler(content_types=['location'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -119,7 +117,7 @@ def get_messages(message):
 
 
 # -----------------------------------------------------------------------
-# Получение контактов от юзера
+
 @bot.message_handler(content_types=['contact'])
 def get_messages(message):
     chat_id = message.chat.id
@@ -173,7 +171,7 @@ def get_text_messages(message):
             send_help(bot, chat_id)
 
     else:  # ======================================= случайный текст
-        bot.send_message(chat_id, text="Это что такое  ➡  " + ms_text + " ? 🤡a")
+        bot.send_message(chat_id, text='Это что такое  ➡  "' + ms_text + '" ? 🤡a')
         menuBot.goto_menu(bot, chat_id, "Главное меню")
 
 
@@ -215,4 +213,4 @@ def send_help(bot, chat_id):
 # ---------------------------------------------------------------------
 
 
-bot.polling(none_stop=True, interval=0)  # Запускаем бота
+bot.polling(none_stop=True, interval=0)

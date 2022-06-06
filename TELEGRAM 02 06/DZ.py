@@ -78,7 +78,7 @@ def dz4_ResponseHandler(bot, chat_id, age_int):
         mult = mult * temp
         user_age_ex = user_age_ex // 10
 
-    bot.send_message(chat_id, text=f"Сумма чисел возраста: {sum}. А произведение: {mult} .")
+    bot.send_message(chat_id, text=f"Сумма чисел возраста: {sum}. А произведение: {mult}.")
 
 # -----------------------------------------------------------------------
 def dz5(bot, chat_id):
@@ -130,7 +130,7 @@ def my_inputInt_SecondPart(message, botQuestion, txtQuestion, ResponseHandler):
         ResponseHandler(botQuestion, chat_id, var_int)
     except ValueError:
         botQuestion.send_message(chat_id,
-                                 text="Это не возраст!!")
+                                 text="Это не то, что мне нужно!!")
         my_inputInt(botQuestion, chat_id, txtQuestion, ResponseHandler)  # это не рекурсия, но очень похоже
         # у нас пара процедур, которые вызывают друг-друга, пока пользователь не введёт корректные данные,
         # и тогда этот цикл прервётся, и управление перейдёт "наружу", в ResponseHandler
